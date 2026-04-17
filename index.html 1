@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkin Park - Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header role="banner">
+    <nav aria-label="Navegação principal">
+      <h1>Linkin Park</h1>
+
+      <div class="controls">
+        <button onclick="changeFontSize(1)" aria-label="Aumentar fonte">A+</button>
+        <button onclick="changeFontSize(-1)" aria-label="Diminuir fonte">A-</button>
+        <button onclick="toggleContrast()" aria-label="Alternar alto contraste">Contraste</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section id="hero" class="reveal" aria-labelledby="hero-title">
+      <h2 id="hero-title">Uma das maiores bandas de rock do mundo</h2>
+      <p>Explorando som, emoção e inovação.</p>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="about" class="reveal" aria-labelledby="about-title">
+      <h2 id="about-title">Sobre a Banda</h2>
+      <article>
+        <p>
+          Linkin Park é uma banda de rock que mistura nu metal, eletrônico e hip-hop,
+          marcada por letras profundas e experimentação sonora.
+        </p>
+      </article>
+    </section>
+
+    <!-- ÁLBUNS (DINÂMICO) -->
+    <section id="albums" class="reveal" aria-labelledby="albums-title">
+      <h2 id="albums-title">Álbuns</h2>
+      <div id="albums-container" class="grid"></div>
+    </section>
+
+    <!-- CARROSSEL -->
+    <section id="carousel" class="reveal" aria-labelledby="carousel-title">
+      <h2 id="carousel-title">Galeria</h2>
+      <div class="carousel" aria-live="polite">
+        <button onclick="prevSlide()" aria-label="Imagem anterior">◀</button>
+        <div id="carousel-track"></div>
+        <button onclick="nextSlide()" aria-label="Próxima imagem">▶</button>
+      </div>
+    </section>
+
+    <!-- ACORDEÃO -->
+    <section id="faq" class="reveal" aria-labelledby="faq-title">
+      <h2 id="faq-title">Curiosidades</h2>
+      <div id="accordion"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>&copy; 2026 - Projeto Educacional</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
