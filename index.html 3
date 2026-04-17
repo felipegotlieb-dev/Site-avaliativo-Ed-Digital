@@ -1,0 +1,118 @@
+/* =========================
+   📊 DADOS DINÂMICOS
+   ========================= */
+const albums = [
+  { title: "Hybrid Theory", year: 2000 },
+  { title: "Meteora", year: 2003 },
+  { title: "Minutes to Midnight", year: 2007 }
+];
+
+const images = [
+  "https://via.placeholder.com/300",
+  "https://via.placeholder.com/300/111",
+  "https://via.placeholder.com/300/e50914"
+];
+
+const curiosities = [
+  { title: "Origem do nome", content: "Vem do Lincoln Park em Santa Monica." },
+  { title: "Estilo", content: "Mistura rock, rap e eletrônico." }
+];
+
+/* =========================
+   🎨 RENDERIZAÇÃO
+   ========================= */
+function renderAlbums() {
+  const container = document.getElementById("albums-container");
+  albums.forEach(album => {
+    container.innerHTML += `
+      <div class="card">
+        <h3>${album.title}</h3>
+        <p>${album.year}</p>
+      </div>
+    `;
+  });
+}
+
+function renderCarousel() {
+  const track = document.getElementById("carousel-track");
+  track.innerHTML = `<img src="${images[0]}" alt="Imagem da banda">`;
+}
+
+function renderAccordion() {
+  const container = document.getElementById("accordion");
+
+  curiosities.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("accordion-item");
+
+    div.innerHTML = `
+      <div class="accordion-header">${item.title}</div>
+      <div class="accordion-content">${item.content}</div>
+    `;
+
+    div.querySelector(".accordion-header").onclick = () => {
+      const content = div.querySelector(".accordion-content");
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    };
+
+    container.appendChild(div);
+  });
+}
+
+/* =========================
+   🎞 CARROSSEL
+   ========================= */
+let currentSlide = 0;
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % images.length;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + images.length) % images.length;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  document.getElementById("carousel-track").innerHTML =
+    `<img src="${images[currentSlide]}" alt="Imagem da banda">`;
+}
+
+/* =========================
+   ♿ ACESSIBILIDADE
+   ========================= */
+let fontSize = 16;
+
+function changeFontSize(step) {
+  fontSize += step;
+  document.body.style.fontSize = fontSize + "px";
+}
+
+function toggleContrast() {
+  document.body.classList.toggle("high-contrast");
+}
+
+/* =========================
+   ✨ SCROLL REVEAL
+   ========================= */
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+/* =========================
+   🚀 INIT
+   ========================= */
+renderAlbums();
+renderCarousel();
+renderAccordion();
+revealOnScroll();
