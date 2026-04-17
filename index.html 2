@@ -1,0 +1,134 @@
+/* =========================
+   🎨 DESIGN SYSTEM
+   ========================= */
+:root {
+  --primary: #111;
+  --secondary: #e50914;
+  --bg: #f5f5f5;
+  --text: #222;
+
+  --spacing: 1rem;
+  --radius: 12px;
+}
+
+/* =========================
+   🔥 ALTO CONTRASTE
+   ========================= */
+body.high-contrast {
+  --bg: #000;
+  --text: #fff;
+  --primary: #000;
+  --secondary: #ffff00;
+}
+
+/* =========================
+   🌐 BASE
+   ========================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+h1, h2 {
+  margin-bottom: var(--spacing);
+}
+
+section {
+  padding: 2rem;
+}
+
+/* =========================
+   🧭 HEADER
+   ========================= */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls button {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* =========================
+   📱 GRID RESPONSIVO
+   🔧 ALTERE AQUI COLUNAS
+   ========================= */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* ← EDITÁVEL */
+  }
+}
+
+/* =========================
+   📦 CARDS
+   ========================= */
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   🎞 CARROSSEL
+   ========================= */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#carousel-track img {
+  max-width: 300px;
+  border-radius: var(--radius);
+}
+
+/* =========================
+   📂 ACORDEÃO
+   ========================= */
+.accordion-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.accordion-header {
+  cursor: pointer;
+  padding: 1rem;
+  background: var(--secondary);
+  color: white;
+}
+
+.accordion-content {
+  display: none;
+  padding: 1rem;
+}
+
+/* =========================
+   ✨ ANIMAÇÕES (SCROLL)
+   ========================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
